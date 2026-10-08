@@ -1,0 +1,137 @@
+{
+    "meta": {
+        "label": "Generate date range",
+        "description": "Create a one-row date range dataset, or add a date range to every input row.",
+        "icon": "icon-calendar",
+        "iconColor": "blue"
+    },
+    "kind": "PYTHON",
+    "selectableFromDataset": "input_dataset",
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "Input dataset (optional)",
+            "description": "Omit to generate one row. When provided, all rows and existing columns are copied to the output.",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+    "outputRoles": [
+        {
+            "name": "output_dataset",
+            "label": "Output dataset",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+    "params": [
+        {
+            "name": "date_range",
+            "label": "Date range",
+            "type": "SELECT",
+            "defaultValue": "today",
+            "mandatory": true,
+            "description": "Relative ranges use the DSS server's local date and are recalculated on each run.",
+            "selectChoices": [
+                {
+                    "value": "custom",
+                    "label": "Custom"
+                },
+                {
+                    "value": "manual",
+                    "label": "Custom (manual)"
+                },
+                {
+                    "value": "today",
+                    "label": "Today"
+                },
+                {
+                    "value": "yesterday",
+                    "label": "Yesterday"
+                },
+                {
+                    "value": "last_7_days",
+                    "label": "Last 7 days"
+                },
+                {
+                    "value": "last_14_days",
+                    "label": "Last 14 days"
+                },
+                {
+                    "value": "last_work_week",
+                    "label": "Last work week"
+                },
+                {
+                    "value": "last_week",
+                    "label": "Last week"
+                },
+                {
+                    "value": "last_30_days",
+                    "label": "Last 30 days"
+                },
+                {
+                    "value": "last_60_days",
+                    "label": "Last 60 days"
+                },
+                {
+                    "value": "last_month",
+                    "label": "Last month"
+                },
+                {
+                    "value": "last_quarter",
+                    "label": "Last quarter"
+                },
+                {
+                    "value": "last_year",
+                    "label": "Last year"
+                }
+            ]
+        },
+        {
+            "name": "start_date",
+            "label": "Start date",
+            "type": "DATE",
+            "mandatory": true,
+            "visibilityCondition": "model.date_range == 'custom'"
+        },
+        {
+            "name": "end_date",
+            "label": "End date",
+            "type": "DATE",
+            "mandatory": true,
+            "visibilityCondition": "model.date_range == 'custom'"
+        },
+        {
+            "name": "manual_start_date",
+            "label": "Start date",
+            "type": "STRING",
+            "mandatory": true,
+            "description": "Timestamp in YYYY-MM-DDTHH:MM:SS.000 format.",
+            "visibilityCondition": "model.date_range == 'manual'"
+        },
+        {
+            "name": "manual_end_date",
+            "label": "End date",
+            "type": "STRING",
+            "mandatory": true,
+            "description": "Timestamp in YYYY-MM-DDTHH:MM:SS.000 format.",
+            "visibilityCondition": "model.date_range == 'manual'"
+        },
+        {
+            "name": "start_column_name",
+            "label": "Start column name",
+            "type": "STRING",
+            "mandatory": true,
+            "defaultValue": "start_date"
+        },
+        {
+            "name": "end_column_name",
+            "label": "End column name",
+            "type": "STRING",
+            "mandatory": true,
+            "defaultValue": "end_date"
+        }
+    ]
+}

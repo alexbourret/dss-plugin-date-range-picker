@@ -1,0 +1,14 @@
+{
+    "id": "date-range-picker",
+    "version": "0.0.1",
+    "meta": {
+        "label": "Date Range Picker",
+        "description": "Generate date ranges in datasets or project variables.",
+        "author": "Alex Bourret",
+        "icon": "icon-calendar",
+        "tags": [
+            "Date",
+            "Automation"
+        ]
+    }
+}

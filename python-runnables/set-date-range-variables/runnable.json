@@ -1,0 +1,121 @@
+{
+    "meta": {
+        "label": "Set date range variables",
+        "description": "Recalculate a date range and update two standard project variables on each run.",
+        "icon": "icon-calendar"
+    },
+    "impersonate": true,
+    "permissions": [
+        "WRITE_CONF"
+    ],
+    "resultType": "HTML",
+    "resultLabel": "Updated project variables",
+    "params": [
+        {
+            "name": "date_range",
+            "label": "Date range",
+            "type": "SELECT",
+            "defaultValue": "today",
+            "mandatory": true,
+            "description": "Relative ranges use the DSS server's local date and are recalculated on each run.",
+            "selectChoices": [
+                {
+                    "value": "custom",
+                    "label": "Custom"
+                },
+                {
+                    "value": "manual",
+                    "label": "Custom (manual)"
+                },
+                {
+                    "value": "today",
+                    "label": "Today"
+                },
+                {
+                    "value": "yesterday",
+                    "label": "Yesterday"
+                },
+                {
+                    "value": "last_7_days",
+                    "label": "Last 7 days"
+                },
+                {
+                    "value": "last_14_days",
+                    "label": "Last 14 days"
+                },
+                {
+                    "value": "last_work_week",
+                    "label": "Last work week"
+                },
+                {
+                    "value": "last_week",
+                    "label": "Last week"
+                },
+                {
+                    "value": "last_30_days",
+                    "label": "Last 30 days"
+                },
+                {
+                    "value": "last_60_days",
+                    "label": "Last 60 days"
+                },
+                {
+                    "value": "last_month",
+                    "label": "Last month"
+                },
+                {
+                    "value": "last_quarter",
+                    "label": "Last quarter"
+                },
+                {
+                    "value": "last_year",
+                    "label": "Last year"
+                }
+            ]
+        },
+        {
+            "name": "start_date",
+            "label": "Start date",
+            "type": "DATE",
+            "mandatory": true,
+            "visibilityCondition": "model.date_range == 'custom'"
+        },
+        {
+            "name": "end_date",
+            "label": "End date",
+            "type": "DATE",
+            "mandatory": true,
+            "visibilityCondition": "model.date_range == 'custom'"
+        },
+        {
+            "name": "manual_start_date",
+            "label": "Start date",
+            "type": "STRING",
+            "mandatory": true,
+            "description": "Timestamp in YYYY-MM-DDTHH:MM:SS.000 format.",
+            "visibilityCondition": "model.date_range == 'manual'"
+        },
+        {
+            "name": "manual_end_date",
+            "label": "End date",
+            "type": "STRING",
+            "mandatory": true,
+            "description": "Timestamp in YYYY-MM-DDTHH:MM:SS.000 format.",
+            "visibilityCondition": "model.date_range == 'manual'"
+        },
+        {
+            "name": "start_variable_name",
+            "label": "Start variable name",
+            "type": "STRING",
+            "mandatory": true,
+            "defaultValue": "start_date"
+        },
+        {
+            "name": "end_variable_name",
+            "label": "End variable name",
+            "type": "STRING",
+            "mandatory": true,
+            "defaultValue": "end_date"
+        }
+    ]
+}
